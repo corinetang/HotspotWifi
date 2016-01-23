@@ -1,0 +1,40 @@
+.axis path,
+.axis line {
+  fill: none;
+  stroke: #000;
+  shape-rendering: crispEdges;
+}
+
+.bar {
+  fill: orange;
+}
+
+.bar:hover {
+  fill: orangered ;
+}
+
+.x.axis path {
+  display: none;
+}
+
+#histoGraph #newPop {
+	display: block;
+	position: absolute;
+	background-color: white;
+	border: solid 2px slategray;
+	-webkit-border-radius: 10px;
+	-moz-border-radius: 10px;
+	-o-border-radius: 10px;
+	border-radius: 10px;
+	color: black;
+	padding: 5px;
+	z-index:2;
+}
+#histoGraph #newPop .arrondissement::before {
+	content: "Arrondissement : ";
+	font-weight: bold;
+}
+#histoGraph #newPop .hotWifi::before {
+	content: "Hotspots wifi : ";
+	font-weight: bold;
+}
