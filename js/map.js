@@ -4,8 +4,7 @@ var hotspotList = [];
 var mapMarkers = [];
 
 $(function() { 
-	initMap();
- 	$("#header").load("../templates/header.html"); 	
+	initMap(); 	
 });
 
 function initMap() {
