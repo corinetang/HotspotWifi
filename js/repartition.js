@@ -28,7 +28,9 @@ function initRepartition() {
 		.append('g')
 		.attr('transform', 'translate(' + margin.left + ',' + margin.top + ')');
 
-	var popup =	d3.select('#repartition').append('div').attr('id', 'newPop');
+	var popup =	d3.select('#repartition').append('div')
+		.attr('id', 'newPop')
+		.style('display', 'none');
 
 	x.domain(arrondissementList.map(function(d) { return d.name; }));
 	y.domain([0, d3.max(arrondissementList, function(d) { return d.count; })]);
@@ -54,6 +56,7 @@ function initRepartition() {
 		.on("mouseover", popUp)
 		.on("mouseout", popDown)
 		.on("mousemove", popMove)
+		.on("click", showTable)
 		.append('div');
 };
 
@@ -73,7 +76,7 @@ function popMove() {
 	} else {
 		newPop.css('top', mouse.clientY + 'px');
 	}
-}
+};
 
 function popUp() {
 	var newPop = $('#newPop')
@@ -83,9 +86,27 @@ function popUp() {
 	newPop.html('<div class="arrondissement">' + name + '</div>' + '<div class="hotWifi">' + count + '</div>');
 	newPop.css('display', 'block');
 	popMove();
-}
+};
 
 function popDown() {
 	var newPop = $('#newPop');
 	newPop.css('display', 'none');
-}
+};
+
+function showTable() {
+	var filterHotspot = hotspotList.filter(filterByArrondissement);
+    var tab = d3.select("#tableau").style("visibility", "visible"),
+    tbody = tab.select("tbody").style("text-align", "right"),
+    tr = tbody.selectAll("tr")
+            .data(filterHotspot.fields)
+            .enter().append("tr");
+
+    tr.append("td").html(function (v) { console.log(v); });
+};
+
+function filterByArrondissement(element) {
+    if (element.fields.arrondissement === this.name) {
+        return true;
+    }
+    return false;
+};
