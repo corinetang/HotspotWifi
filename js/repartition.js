@@ -53,10 +53,10 @@ function initRepartition() {
 		.attr('width', x.rangeBand())
 		.attr('y', function(d) { return y(d.count); })
 		.attr('height', function(d) { return height - y(d.count); })
-		.on("mouseover", popUp)
-		.on("mouseout", popDown)
-		.on("mousemove", popMove)
-		.on("click", showTable)
+		.on('mouseover', popUp)
+		.on('mouseout', popDown)
+		.on('mousemove', popMove)
+		.on('click', showTable)
 		.append('div');
 };
 
@@ -95,18 +95,18 @@ function popDown() {
 
 function showTable() {
 	var filterHotspot = hotspotList.filter(filterByArrondissement);
-    var tab = d3.select("#tableau").style("visibility", "visible"),
-    tbody = tab.select("tbody").style("text-align", "right"),
-    tr = tbody.selectAll("tr")
-            .data(filterHotspot.fields)
-            .enter().append("tr");
+    var tab = d3.select('#tableau').style('visibility', 'visible'),
+    tbody = tab.select('tbody').style('text-align', 'right'),
+    tr = tbody.selectAll('tr')
+            .data(filterHotspot)
+            .enter().append('tr');
 
-    tr.append("td").html(function (v) { console.log(v); });
+    tr.append('td').html(function (v) { return v.fields.nom_site; });
+    tr.append('td').html(function (v) { return v.fields.adresse; });
+    tr.append('td').html(function (v) { return v.fields.code_site; });
 };
 
 function filterByArrondissement(element) {
-    if (element.fields.arrondissement === this.name) {
-        return true;
-    }
-    return false;
+	console.log('element', element)
+    return (element.fields.arrondissement === this.name);
 };
