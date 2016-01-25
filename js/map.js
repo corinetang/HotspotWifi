@@ -15,13 +15,22 @@ function initMap() {
 
 function initMarkerHotspotWifiInMap() {
 	var markers = L.markerClusterGroup();
+	var circles = L.markerClusterGroup();
 
   	for (var i = 0; i < hotspotList.length; i++) {
 		x = hotspotList[i].geometry.coordinates[1];
 		y = hotspotList[i].geometry.coordinates[0];
         var marker = L.marker([x, y]);
+
+        var circle = L.circle([x, y], 150, {
+		    color: 'transparent',
+		    fillColor: '#237CC9',
+		    fillOpacity: 0.3
+		});
+		circles.addLayer(circle);
         markers.addLayer(marker);
     }
 
+    mapContainer.addLayer(circles);
     mapContainer.addLayer(markers);
 };

@@ -17,6 +17,10 @@ function initRepartition() {
 		.scale(x)
 		.orient('bottom');
 
+	var yAxis = d3.svg.axis()
+		.scale(y)
+		.orient('left');
+
 	var svg = d3.select('#repartition').append('svg')
 		.attr('id', 'histoGraph')
 		.attr('width', width + margin.left + margin.right)
@@ -24,7 +28,7 @@ function initRepartition() {
 		.append('g')
 		.attr('transform', 'translate(' + margin.left + ',' + margin.top + ')');
 
-	var popup =	svg.append('div').attr('id', 'newPop');
+	var popup =	d3.select('#repartition').append('div').attr('id', 'newPop');
 
 	x.domain(arrondissementList.map(function(d) { return d.name; }));
 	y.domain([0, d3.max(arrondissementList, function(d) { return d.count; })]);
@@ -33,6 +37,9 @@ function initRepartition() {
 		.attr('class', 'x axis')
 		.attr('transform', 'translate(0,' + height + ')')
 		.call(xAxis);
+	svg.append('g')
+		.attr('class', 'y axis')
+		.call(yAxis)
 
 	svg.selectAll('.bar')
 	 	.data(arrondissementList)
@@ -51,33 +58,34 @@ function initRepartition() {
 };
 
 function popMove() {
-	var newPop = d3.select('#newPop'),
-	 	width = newPop.style('width').replace('px', ''),
-		height = newPop.style('height').replace('px', ''),
+	var newPop = $('#newPop'),
+	 	width = newPop.css('width').replace('px', ''),
+		height = newPop.css('height').replace('px', ''),
 		mouse = d3.event;
+
 	if (mouse.clientX > (window.innerWidth - width - 10)) {
-		newPop.style('left', mouse.clientX - width - 10 + 'px');
+		newPop.css('left', mouse.clientX - width - 10 + 'px');
 	} else {
-		newPop.style('left', mouse.clientX + 10 + 'px');
+		newPop.css('left', mouse.clientX + 10 + 'px');
 	}
 	if (mouse.clientY > (window.innerHeight - height - 10)) {
-		newPop.style('top', mouse.clientY - height - 10 + 'px');
+		newPop.css('top', mouse.clientY - height - 10 + 'px');
 	} else {
-		newPop.style('top', mouse.clientY + 'px');
+		newPop.css('top', mouse.clientY + 'px');
 	}
 }
 
-function popUp(mouse) {
-	var newPop = d3.select('#newPop')
+function popUp() {
+	var newPop = $('#newPop')
 		name = this.name,
 		count = this.count;
-	 
+
 	newPop.html('<div class="arrondissement">' + name + '</div>' + '<div class="hotWifi">' + count + '</div>');
-	newPop.style('display', 'block');
+	newPop.css('display', 'block');
 	popMove();
 }
 
 function popDown() {
-	var newPop = d3.select('#newPop');
-	newPop.style('display', 'none');
+	var newPop = $('#newPop');
+	newPop.css('display', 'none');
 }
