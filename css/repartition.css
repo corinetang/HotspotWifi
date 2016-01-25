@@ -37,3 +37,11 @@
 	content: "Hotspots wifi : ";
 	font-weight: bold;
 }
+
+#tableau {
+	visibility: hidden;
+}
+
+#tableau td {
+	text-align: left;
+}

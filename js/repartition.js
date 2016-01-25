@@ -94,6 +94,7 @@ function popDown() {
 };
 
 function showTable() {
+	$('#tableau tbody').empty();
 	var filterHotspot = hotspotList.filter(filterByArrondissement);
     var tab = d3.select('#tableau').style('visibility', 'visible'),
     tbody = tab.select('tbody').style('text-align', 'right'),
