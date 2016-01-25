@@ -107,6 +107,5 @@ function showTable() {
 };
 
 function filterByArrondissement(element) {
-	console.log('element', element)
     return (element.fields.arrondissement === this.name);
 };
