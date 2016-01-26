@@ -1,4 +1,4 @@
-var mapContainer = $('#map');
+var mapContainer;
 
 $(function() {
 	if (hotspotList.length !== 0) {
