@@ -1,7 +1,7 @@
 var geoMapContainer;
 
 $(function() {
-	initGeolocalisationMap();
+	setTimeout(initGeolocalisationMap, 0);
 });
 
 function initGeolocalisationMap() {
@@ -10,8 +10,9 @@ function initGeolocalisationMap() {
 		{attribution:'&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'}).addTo(geoMapContainer);
 	// var popup = L.popup();
  //    popup
- //        .setLatLng(latlng)
+ //        .setLatLng(e.latlng)
  //        .setContent("You are here" + latlng.toString())
  //        .openOn(geoMapContainer);
+ 	geoMapContainer.locate({setView:true});
 	
 };
