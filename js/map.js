@@ -22,8 +22,9 @@ function initMarkerHotspotWifiInMap() {
 		y = hotspotList[i].geometry.coordinates[0];
 
 		var blueMarker = L.AwesomeMarkers.icon({
-			icon: 'apple',
-			markerColor: 'darkblue'
+			icon: 'wifi',
+			markerColor: 'darkblue',
+			prefix: 'fa'
 		});
 
   		var marker = L.marker([x, y], {icon: blueMarker})

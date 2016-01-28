@@ -20,7 +20,8 @@ function locateUser() {
 
  			var userMarker = L.AwesomeMarkers.icon({
 				icon: 'user',
-				markerColor: 'red'
+				markerColor: 'red',
+				prefix: 'fa'
 			});
 
             var marker = L.marker([userLat, userLon], {icon: userMarker}).bindPopup('Your are here :)');
@@ -63,8 +64,9 @@ function sortByDistance(a, b) {
 function setHotspotWifiCloser(hotspotList) {
 	for (var i = 0; i < hotspotList.length; i++) {
 		var wifiMarker = L.AwesomeMarkers.icon({
-			icon: 'apple',
-			markerColor: 'darkblue'
+			icon: 'wifi',
+			markerColor: 'darkblue',
+			prefix: 'fa'
 		});
 
 		var marker = L.marker([hotspotList[i].hotspotData.latitude, hotspotList[i].hotspotData.longitude], {icon: wifiMarker})
@@ -89,7 +91,7 @@ function setTableau(hotspotList) {
             .data(hotspotList)
             .enter().append('tr');
 
-	tr.append('td').html(function (v) { return v.distance; });
+	tr.append('td').html(function (v) { return parseInt(v.distance, 10); });
     tr.append('td').html(function (v) { return v.hotspotData.nom_site; });
     tr.append('td').html(function (v) { return v.hotspotData.adresse; });
     tr.append('td').html(function (v) { return v.hotspotData.code_site; });
