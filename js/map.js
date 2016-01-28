@@ -20,7 +20,13 @@ function initMarkerHotspotWifiInMap() {
   	for (var i = 0; i < hotspotList.length; i++) {
 		x = hotspotList[i].geometry.coordinates[1];
 		y = hotspotList[i].geometry.coordinates[0];
-        var marker = L.marker([x, y]);
+
+		var blueMarker = L.AwesomeMarkers.icon({
+			icon: 'apple',
+			markerColor: 'darkblue'
+		});
+
+  		var marker = L.marker([x, y], {icon: blueMarker});
 
         var circle = L.circle([x, y], 150, {
 		    color: 'transparent',

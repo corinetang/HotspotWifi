@@ -92,7 +92,7 @@ function popDown() {
 	var newPop = $('#newPop');
 	newPop.css('display', 'none');
 };
-
+	
 function showTable() {
 	$('#tableau tbody').empty();
 	var filterHotspot = hotspotList.filter(filterByArrondissement);

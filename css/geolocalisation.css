@@ -2,8 +2,17 @@
 	position:absolute; 
 	bottom:0;
 	left:0;
-	right:0;
 	
-	width:100%;
+	width:60%;
 	height:calc(100% - 80px);
+}
+
+#geolocalisation-tab {
+	position:absolute; 
+	bottom:0;
+	right:0;
+	top: 150px;
+	
+	width:39%;
+	height:calc(100% - 150px);
 }

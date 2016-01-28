@@ -8,7 +8,6 @@ function initGeolocalisationMap() {
 	geoMapContainer = L.map('geolocalisation-map').setView([48.856578, 2.351828], 12);
 	L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', 
 		{attribution:'&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'}).addTo(geoMapContainer);
-
 	locateUser();
 };
 
@@ -18,12 +17,18 @@ function locateUser() {
  		.on('locationfound', function(e){
  			var userLat = e.latitude,
  			userLon = e.longitude;
-            var marker = L.marker([userLat, userLon]).bindPopup('Your are here :)');
-            geoMapContainer.setView([userLat, userLon], 15);
+
+ 			var userMarker = L.AwesomeMarkers.icon({
+				icon: 'user',
+				markerColor: 'red'
+			});
+
+            var marker = L.marker([userLat, userLon], {icon: userMarker}).bindPopup('Your are here :)');
+            geoMapContainer.setView([userLat, userLon], 12);
             geoMapContainer.addLayer(marker);
             var hwCloser = findHotspotCloser(userLat, userLon);
-            console.log('hwCloser', hwCloser)
             setHotspotWifiCloser(hwCloser);
+            setTableau(hwCloser);
         })
        .on('locationerror', function(e){
             console.log(e);
@@ -37,7 +42,7 @@ function findHotspotCloser(locateLat, locateLon) {
 		distanceList[i] = {};
 		distanceList[i]['hotspotData'] = {
 			'nom_site': hotspotList[i].fields.nom_site,
-			'addresse': hotspotList[i].fields.adresse,
+			'adresse': hotspotList[i].fields.adresse,
 			'code_site': hotspotList[i].fields.code_site,
 			'latitude': hotspotList[i].geometry.coordinates[1],
 			'longitude': hotspotList[i].geometry.coordinates[0]
@@ -57,7 +62,32 @@ function sortByDistance(a, b) {
 
 function setHotspotWifiCloser(hotspotList) {
 	for (var i = 0; i < hotspotList.length; i++) {
-		var marker = L.marker([hotspotList[i].hotspotData.latitude, hotspotList[i].hotspotData.longitude]);
+		var wifiMarker = L.AwesomeMarkers.icon({
+			icon: 'apple',
+			markerColor: 'darkblue'
+		});
+
+		var marker = L.marker([hotspotList[i].hotspotData.latitude, hotspotList[i].hotspotData.longitude], {icon: wifiMarker});
+		var circle = L.circle([hotspotList[i].hotspotData.latitude, hotspotList[i].hotspotData.longitude], 150, {
+		    color: 'transparent',
+		    fillColor: '#237CC9',
+		    fillOpacity: 0.3
+		});
+		geoMapContainer.addLayer(circle);
 		geoMapContainer.addLayer(marker);
 	}
 };
+
+function setTableau(hotspotList) {
+	$('#tableauCloser tbody').empty();
+    var tab = d3.select('#tableauCloser').style('visibility', 'visible'),
+    tbody = tab.select('tbody').style('text-align', 'right'),
+    tr = tbody.selectAll('tr')
+            .data(hotspotList)
+            .enter().append('tr');
+
+	tr.append('td').html(function (v) { return v.distance; });
+    tr.append('td').html(function (v) { return v.hotspotData.nom_site; });
+    tr.append('td').html(function (v) { return v.hotspotData.adresse; });
+    tr.append('td').html(function (v) { return v.hotspotData.code_site; });
+}
