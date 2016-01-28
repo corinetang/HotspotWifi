@@ -67,7 +67,10 @@ function setHotspotWifiCloser(hotspotList) {
 			markerColor: 'darkblue'
 		});
 
-		var marker = L.marker([hotspotList[i].hotspotData.latitude, hotspotList[i].hotspotData.longitude], {icon: wifiMarker});
+		var marker = L.marker([hotspotList[i].hotspotData.latitude, hotspotList[i].hotspotData.longitude], {icon: wifiMarker})
+			.bindPopup('<p><b>Nom du site : </b>' + hotspotList[i].hotspotData.nom_site 
+				+ '<br /><b>Adresse : </b>' + hotspotList[i].hotspotData.adresse
+				+ '<br /><b>Code du site : </b>' + hotspotList[i].hotspotData.code_site + '</p>');
 		var circle = L.circle([hotspotList[i].hotspotData.latitude, hotspotList[i].hotspotData.longitude], 150, {
 		    color: 'transparent',
 		    fillColor: '#237CC9',
@@ -90,4 +93,4 @@ function setTableau(hotspotList) {
     tr.append('td').html(function (v) { return v.hotspotData.nom_site; });
     tr.append('td').html(function (v) { return v.hotspotData.adresse; });
     tr.append('td').html(function (v) { return v.hotspotData.code_site; });
-}
+};

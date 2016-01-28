@@ -26,7 +26,10 @@ function initMarkerHotspotWifiInMap() {
 			markerColor: 'darkblue'
 		});
 
-  		var marker = L.marker([x, y], {icon: blueMarker});
+  		var marker = L.marker([x, y], {icon: blueMarker})
+  				.bindPopup('<p><b>Nom du site : </b>' + hotspotList[i].fields.nom_site 
+				+ '<br /><b>Adresse : </b>' + hotspotList[i].fields.adresse
+				+ '<br /><b>Code du site : </b>' + hotspotList[i].fields.code_site + '</p>');;
 
         var circle = L.circle([x, y], 150, {
 		    color: 'transparent',
