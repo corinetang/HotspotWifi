@@ -1,20 +1,19 @@
 #geolocalisation-map {
-	position:absolute; 
-	bottom:0;
-	left:0;
-	
-	width:60%;
-	height:calc(100% - 80px);
+	position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 60%;
+    height: calc(100% - 52px);
 }
 
 #geolocalisation-tab {
-	position:absolute; 
-	bottom:0;
-	right:0;
-	top: 150px;
-	
-	width:39%;
-	height:calc(100% - 150px);
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    top: 150px;
+    width: 40%;
+    padding: 0px 10px;
+    height: calc(100% - 150px);
 }
 
 #geolocalisation-tab td {
