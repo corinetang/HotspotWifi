@@ -1,4 +1,5 @@
 var geoMapContainer;
+var markerList = [];
 
 $(function() {
 	setTimeout(initGeolocalisationMap, 0);
@@ -78,6 +79,8 @@ function setHotspotWifiCloser(hotspotList) {
 		    fillColor: '#237CC9',
 		    fillOpacity: 0.3
 		});
+
+		markerList.push(marker);
 		geoMapContainer.addLayer(circle);
 		geoMapContainer.addLayer(marker);
 	}
@@ -101,5 +104,10 @@ function setTableau(hotspotList) {
 };
 
 function selectMarker(data) {
-	console.log('geoMapContainer', geoMapContainer)
+	for (var i = 0; i < markerList.length; i++) {
+		var currentLatLng = markerList[i].getLatLng();
+		if (data.hotspotData.latitude == currentLatLng.lat &&  data.hotspotData.longitude == currentLatLng.lng) {
+			console.log('ici', markerList[i])
+		}
+	};
 };
