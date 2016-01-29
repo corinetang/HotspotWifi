@@ -1,6 +1,6 @@
 var geoMapContainer;
 var markerList = [];
-var cercleList = [];
+var circleList = [];
 
 $(function() {
 	setTimeout(initGeolocalisationMap, 0);
@@ -82,7 +82,7 @@ function setHotspotWifiCloser(hotspotList) {
 		});
 
 		markerList.push(marker);
-		cercleList.push(circle);
+		circleList.push(circle);
 		geoMapContainer.addLayer(circle);
 		geoMapContainer.addLayer(marker);
 	}
@@ -112,12 +112,16 @@ function setTableau(hotspotList) {
 
 function selectMarker(data) {
 	var selectedMarker = getMarker(data.hotspotData);
+	var selectedCircle = getCircle(data.hotspotData);
 	$(selectedMarker._icon).addClass('selected-marker');
+	$(selectedCircle._container.children[0]).addClass('selected-circle');
 };
 
 function unselectMarker(data) {
 	var selectedMarker = getMarker(data.hotspotData);
+	var selectedCircle = getCircle(data.hotspotData);
 	$(selectedMarker._icon).removeClass('selected-marker');
+	$(selectedCircle._container.children[0]).removeClass('selected-circle');
 };
 
 function getMarker(hotspotData) {
@@ -127,7 +131,10 @@ function getMarker(hotspotData) {
 			return markerList[i];
 		}
 	}
+	return null;
+};
 
+function getCircle(hotspotData) {
 	for (var i = 0; i < circleList.length; i++) {
 		var currentLatLng = circleList[i].getLatLng();
 		if (hotspotData.latitude == currentLatLng.lat && hotspotData.longitude == currentLatLng.lng) {

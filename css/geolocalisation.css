@@ -17,10 +17,18 @@
 	height:calc(100% - 150px);
 }
 
-.selected-marker {
-	background-position-x: -72px;
+#geolocalisation-tab td {
+	text-align: left;
 }
 
-.selected-tr {
-	background-color: #B9D991;
+.selected-marker {
+	background-position-x: -72px;
+	fill-opacity: 0.5;
+}
+
+.selected-circle {
+	fill: #72AF26;
+	fill-opacity: 0.5;
+	stroke: #72AF26;
+	stroke-width: 1px;
 }
