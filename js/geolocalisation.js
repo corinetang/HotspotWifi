@@ -89,10 +89,17 @@ function setTableau(hotspotList) {
     tbody = tab.select('tbody').style('text-align', 'right'),
     tr = tbody.selectAll('tr')
             .data(hotspotList)
-            .enter().append('tr');
+            .enter().append('tr')
+            .on('click', function(d) {
+            	selectMarker(d);
+            });
 
 	tr.append('td').html(function (v) { return parseInt(v.distance, 10); });
     tr.append('td').html(function (v) { return v.hotspotData.nom_site; });
     tr.append('td').html(function (v) { return v.hotspotData.adresse; });
     tr.append('td').html(function (v) { return v.hotspotData.code_site; });
+};
+
+function selectMarker(data) {
+	console.log('geoMapContainer', geoMapContainer)
 };
