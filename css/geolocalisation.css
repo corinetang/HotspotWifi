@@ -16,3 +16,11 @@
 	width:39%;
 	height:calc(100% - 150px);
 }
+
+.selected-marker {
+	background-position-x: -72px;
+}
+
+.selected-tr {
+	background-color: #B9D991;
+}

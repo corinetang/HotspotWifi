@@ -1,5 +1,6 @@
 var geoMapContainer;
 var markerList = [];
+var cercleList = [];
 
 $(function() {
 	setTimeout(initGeolocalisationMap, 0);
@@ -81,6 +82,7 @@ function setHotspotWifiCloser(hotspotList) {
 		});
 
 		markerList.push(marker);
+		cercleList.push(circle);
 		geoMapContainer.addLayer(circle);
 		geoMapContainer.addLayer(marker);
 	}
@@ -93,8 +95,13 @@ function setTableau(hotspotList) {
     tr = tbody.selectAll('tr')
             .data(hotspotList)
             .enter().append('tr')
-            .on('click', function(d) {
+            .on('mouseover', function(d) {
             	selectMarker(d);
+            	$(this).addClass('selected-tr');
+            })
+            .on('mouseout', function(d) {
+            	unselectMarker(d);
+            	$(this).removeClass('selected-tr');
             });
 
 	tr.append('td').html(function (v) { return parseInt(v.distance, 10); });
@@ -104,10 +111,28 @@ function setTableau(hotspotList) {
 };
 
 function selectMarker(data) {
+	var selectedMarker = getMarker(data.hotspotData);
+	$(selectedMarker._icon).addClass('selected-marker');
+};
+
+function unselectMarker(data) {
+	var selectedMarker = getMarker(data.hotspotData);
+	$(selectedMarker._icon).removeClass('selected-marker');
+};
+
+function getMarker(hotspotData) {
 	for (var i = 0; i < markerList.length; i++) {
 		var currentLatLng = markerList[i].getLatLng();
-		if (data.hotspotData.latitude == currentLatLng.lat &&  data.hotspotData.longitude == currentLatLng.lng) {
-			console.log('ici', markerList[i])
+		if (hotspotData.latitude == currentLatLng.lat && hotspotData.longitude == currentLatLng.lng) {
+			return markerList[i];
 		}
-	};
+	}
+
+	for (var i = 0; i < circleList.length; i++) {
+		var currentLatLng = circleList[i].getLatLng();
+		if (hotspotData.latitude == currentLatLng.lat && hotspotData.longitude == currentLatLng.lng) {
+			return circleList[i];
+		}
+	}
+	return null;
 };
