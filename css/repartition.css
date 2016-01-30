@@ -6,29 +6,32 @@
 }
 
 .bar {
-  	fill: orange;
+  	fill: #5EABDA;
+  	cursor: pointer;
 }
 
 .bar:hover {
-  	fill: orangered ;
+  	fill: #00639E;
 }
 
 .x.axis path {
   	display: none;
 }
 
-#newPop {
-	display: inline-block;
-	position: fixed;
-	background-color: white;
-	border: solid 2px slategray;
-	-webkit-border-radius: 10px;
-	-moz-border-radius: 10px;
-	-o-border-radius: 10px;
-	border-radius: 10px;
-	color: black;
-	padding: 5px;
+#histoGraph {
+  	position: absolute;
+  	left: calc(50% - 480px);
+  	top: 40px;
 }
+
+#newPop {
+    position: fixed;
+    background-color: white;
+    color: black;
+    padding: 5px;
+    box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.3);
+}
+
 #newPop .arrondissement::before {
 	content: "Arrondissement : ";
 	font-weight: bold;
@@ -38,10 +41,41 @@
 	font-weight: bold;
 }
 
+.panel {
+	position: relative;
+	top: 450px;
+}
+
 #tableau {
-	visibility: hidden;
+    position: absolute;
+    width: calc(100% - 20px);
+    left: 10px;
+    visibility: hidden;
+}
+
+#tableau thead {
+    background-color: #2C87BE;
+	border: 1px solid #2C87BE;
+    color: #EEF3E8;
+}
+
+#tableau thead > tr > th {
+	vertical-align: middle;
+    border-bottom: 2px solid #00639E;
+}
+
+#tableau tbody tr:last-child {
+    border-bottom: 1px solid #ddd;
 }
 
 #tableau td {
 	text-align: left;
+}
+
+#tableau td:first-child {
+    border-left: 1px solid #ddd;
+}
+
+#tableau td:last-child {
+    border-right: 1px solid #ddd;
 }

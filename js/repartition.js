@@ -4,8 +4,8 @@ $(function() {
 
 function initRepartition() {
 	var margin = {top: 40, right: 20, bottom: 30, left: 40},
-	width = 960 - margin.left - margin.right,
-	height = 500 - margin.top - margin.bottom;
+	width = 900 - margin.left - margin.right,
+	height = 400 - margin.top - margin.bottom;
 
 	var x = d3.scale.ordinal()
 		.rangeRoundBands([0, width], .1);
@@ -67,9 +67,9 @@ function popMove() {
 		mouse = d3.event;
 
 	if (mouse.clientX > (window.innerWidth - width - 10)) {
-		newPop.css('left', mouse.clientX - width - 10 + 'px');
+		newPop.css('left', mouse.clientX - width - 5 + 'px');
 	} else {
-		newPop.css('left', mouse.clientX + 10 + 'px');
+		newPop.css('left', mouse.clientX + 18 + 'px');
 	}
 	if (mouse.clientY > (window.innerHeight - height - 10)) {
 		newPop.css('top', mouse.clientY - height - 10 + 'px');
