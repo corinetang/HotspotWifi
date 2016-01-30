@@ -4,8 +4,8 @@ var hotspotListByArrondissement = [];
 
 $(function() {
 	initData();
- 	$('#header').load('../templates/header.html');
- 	$('#container').load('../templates/map.html');
+ 	$('#header').load('./templates/header.html');
+ 	$('#container').load('./templates/map.html');
 });
 
 function sortByArrondissement(a, b) {

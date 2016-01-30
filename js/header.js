@@ -1,7 +1,7 @@
 $('#repartition-link').on('click', function() {
 	if (!$(this).hasClass('active')) {
 		$('#container').empty();
-	 	$('#container').load('../templates/repartition.html');
+	 	$('#container').load('./templates/repartition.html');
 	 	$(this).siblings().removeClass('active');
 	 	$(this).addClass('active');
 	}
@@ -10,7 +10,7 @@ $('#repartition-link').on('click', function() {
 $('#map-link').on('click', function() {
 	if (!$(this).hasClass('active')) {
 		$('#container').empty();
-	 	$('#container').load('../templates/map.html');
+	 	$('#container').load('./templates/map.html');
 	 	$(this).siblings().removeClass('active');
 	 	$(this).addClass('active');
 	}
@@ -19,7 +19,7 @@ $('#map-link').on('click', function() {
 $('#geolocalisation-link').on('click', function() {
 	if (!$(this).hasClass('active')) {
 		$('#container').empty();
-	 	$('#container').load('../templates/geolocalisation.html');
+	 	$('#container').load('./templates/geolocalisation.html');
 	 	$(this).siblings().removeClass('active');
 	 	$(this).addClass('active');
 	}
