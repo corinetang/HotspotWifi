@@ -1,0 +1,42 @@
+nav.navbar {
+	position: fixed;
+	z-index: 2;
+	width: 100%;
+	margin-bottom: 0;
+    border: 0;
+}
+
+nav.navbar > .container-fluid {
+	background-color: #0066A2;
+}
+
+nav.navbar > .container-fluid a {
+	color: #E8E8E8;
+	cursor: pointer;
+}
+
+nav.navbar > .container-fluid a.navbar-brand {
+	cursor: default;
+}
+
+nav.navbar > .container-fluid a:hover {
+	color: #E8E8E8;
+}
+
+nav.navbar > .container-fluid a:not(.navbar-brand):hover {
+	background-color: #1778B1;
+}
+
+nav.navbar > .container-fluid .active a,
+nav.navbar > .container-fluid .active a:focus {
+	background-color: #0F5884;
+	background-image: none;
+	color: #E8E8E8;
+}
+
+nav.navbar > .container-fluid .active a:hover {
+	background-color: #1778B1;
+	color: #E8E8E8;
+}
+
+NAVBAR BRAND

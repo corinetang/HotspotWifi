@@ -1,0 +1,81 @@
+.axis path,
+.axis line {
+	fill: none;
+	stroke: #000;
+	shape-rendering: crispEdges;
+}
+
+.bar {
+  	fill: #5EABDA;
+  	cursor: pointer;
+}
+
+.bar:hover {
+  	fill: #00639E;
+}
+
+.x.axis path {
+  	display: none;
+}
+
+#histoGraph {
+  	position: absolute;
+  	left: calc(50% - 480px);
+  	top: 40px;
+}
+
+#newPop {
+    position: fixed;
+    background-color: white;
+    color: black;
+    padding: 5px;
+    box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.3);
+}
+
+#newPop .arrondissement::before {
+	content: "Arrondissement : ";
+	font-weight: bold;
+}
+#newPop .hotWifi::before {
+	content: "Hotspots wifi : ";
+	font-weight: bold;
+}
+
+.panel {
+	position: relative;
+	top: 450px;
+}
+
+#tableau {
+    position: absolute;
+    width: calc(100% - 20px);
+    left: 10px;
+    visibility: hidden;
+}
+
+#tableau thead {
+    background-color: #2C87BE;
+	border: 1px solid #2C87BE;
+    color: #EEF3E8;
+}
+
+#tableau thead > tr > th {
+	vertical-align: middle;
+    border-bottom: 2px solid #00639E;
+}
+
+#tableau tbody tr:last-child {
+    border-bottom: 1px solid #ddd;
+}
+
+#tableau td {
+	text-align: left;
+}
+
+#tableau td:first-child {
+    border-left: 1px solid #ddd;
+}
+
+#tableau td:last-child {
+    border-right: 1px solid #ddd;
+}

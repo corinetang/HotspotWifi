@@ -1,0 +1,60 @@
+#geolocalisation-map {
+	position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 60%;
+    height: calc(100% - 52px);
+}
+
+#geolocalisation-tab {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    top: 200px;
+    width: 40%;
+    padding: 0px 10px;
+    height: calc(100% - 200px);
+}
+
+#geolocalisation-tab thead {
+    background-color: #72AF26;
+    border: 1px solid #72AF26;
+    color: #EEF3E8;
+}
+
+#geolocalisation-tab thead > tr > th {
+	vertical-align: middle;
+    border-bottom: 2px solid #609C14;
+}
+
+#geolocalisation-tab tbody tr:last-child {
+    border-bottom: 1px solid #ddd;
+}
+
+#geolocalisation-tab td {
+	text-align: left;
+}
+
+#geolocalisation-tab td:first-child {
+    border-left: 1px solid #ddd;
+}
+
+#geolocalisation-tab td:last-child {
+    border-right: 1px solid #ddd;
+}
+
+.selected-marker {
+	background-position-x: -72px;
+	fill-opacity: 0.5;
+}
+
+.selected-circle {
+	fill: #72AF26;
+	fill-opacity: 0.5;
+	stroke: #72AF26;
+	stroke-width: 1px;
+}
+
+.selected-tr {
+	background-color: #B9D991;
+}
